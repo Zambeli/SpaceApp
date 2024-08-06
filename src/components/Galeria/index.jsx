@@ -19,10 +19,10 @@ const SecaoFluida = styled.section`
   }
 `;
 
-const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito }) => {
+const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito, setTag }) => {
   return (
     <>
-      <Tags />
+      <Tags setTag={setTag}/>
 
       <GaleriaContainer>
         <SecaoFluida>

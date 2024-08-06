@@ -5,8 +5,9 @@ import BarraLateral from "./components/BarraLateral";
 import Banner from "./components/Banner";
 import Galeria from "./components/Galeria";
 import fotos from "./fotos.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalZoom from "./components/ModalZoom";
+import Footer from "./components/Footer";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
@@ -39,6 +40,18 @@ const ConteudoGaleria = styled.section`
 const App = () => {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
+  const [tag, setTag] = useState()
+  const [filtro, setFiltro] = useState('')
+
+  useEffect(() => {
+    const fotosFiltradas = fotos.filter(foto => {
+      const validaTag = !tag || tag === foto.tagId
+      const validaInput = !filtro || foto.titulo.toLowerCase().includes(filtro.toLowerCase())
+      return validaTag && validaInput
+    })
+
+    setFotosDaGaleria(fotosFiltradas)
+  },[filtro, tag])
 
   const aoAlternarFavorito = (foto) => {
     if (foto.id === fotoSelecionada?.id) {
@@ -64,7 +77,7 @@ const App = () => {
     <FundoGradiente>
       <EstilosGlobais />
       <AppContainer>
-        <Cabecalho />
+        <Cabecalho setFiltro={setFiltro}/>
         <MainContainer>
           <BarraLateral />
           <ConteudoGaleria>
@@ -73,6 +86,7 @@ const App = () => {
               background="./imagens/banner.png"
             />
             <Galeria
+              setTag={setTag}
               aoAlternarFavorito={aoAlternarFavorito}
               aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
               fotos={fotosDaGaleria}
@@ -85,6 +99,7 @@ const App = () => {
         aoFecharModal={() => setFotoSelecionada(null)}
         aoAlternarFavorito={aoAlternarFavorito}
       />
+      <Footer/>
     </FundoGradiente>
   );
 };

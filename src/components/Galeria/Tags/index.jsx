@@ -34,12 +34,12 @@ const TagButton = styled.button`
   }
 `;
 
-const Tags = () => {
+const Tags = ({setTag}) => {
   return (
     <TagContainer>
       <TagTitulo>Busque por tags:</TagTitulo>
       {tags.map((tag) => (
-        <TagButton key={tag.id}>{tag.titulo}</TagButton>
+        <TagButton onClick={() => setTag(tag.id)} key={tag.id}>{tag.titulo}</TagButton>
       ))}
     </TagContainer>
   );

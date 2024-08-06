@@ -34,13 +34,13 @@ const ImagemEstilizada = styled.img`
     height: 32px;
 `
 
-const CampoTexto = () => {
+const CampoTexto = ({ setFiltro }) => {
 
     return(
 
         <CampoTextoDiv>
 
-            <InputEstilizado type="text" placeholder="O que você procura?"/>
+            <InputEstilizado onChange={(event) => setFiltro(event.target.value)} type="text" placeholder="O que você procura?"/>
 
             <ImagemEstilizada src="./imagens/Lupa.svg"/>
 
