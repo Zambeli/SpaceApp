@@ -12,6 +12,8 @@ const HeaderEstilizado = styled.header`
 
 `
 
+
+
 const Cabecalho = () => {
 
     return (

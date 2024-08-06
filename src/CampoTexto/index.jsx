@@ -17,9 +17,10 @@ border-radius: 10px;
 margin-right: 50px;
 padding: 12px 16px;
 color: #D9D9D9;
-font-weight: 600;
+font-weight: 500;
 box-sizing: border-box;
 font-size: 20px;
+margin: 0;
 &::placeholder {
     color: #D9D9D9;
 }
@@ -28,7 +29,7 @@ font-size: 20px;
 const ImagemEstilizada = styled.img`
     position: absolute;
     top: 12px;
-    right: 10px;
+    right: -60px;
     width: 32px;
     height: 32px;
 `
